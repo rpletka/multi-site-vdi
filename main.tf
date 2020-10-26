@@ -46,8 +46,6 @@ resource "nsxt_policy_group" "InternetProxy" {
   }
 }
 
-
-
 resource "nsxt_policy_security_policy" "Multisite-VDI" {
   description  = "Policy for multisite VDI deployment"
   display_name = "Policy for multisite VDI deployment"
@@ -81,3 +79,17 @@ resource "nsxt_policy_security_policy" "Multisite-VDI" {
   }
 }
 
+resource "nsxt_policy_security_policy" "VDIGuardrailBlackist" {
+  description  = "VDI Guardrails provisioned by Terraform"
+  display_name = "VDI Guardrails  Default Deny"
+  category = "Application"
+  sequence_number = 59999
+  rule {
+    display_name = "Default Deny (Reject)"
+    description  = ""
+    action       = "REJECT"
+    ip_version  = "IPV4"
+    destination_groups = [nsxt_policy_group.VDIDesktops.path]
+    scope = [nsxt_policy_group.VDIDesktops.path]
+  }
+}
