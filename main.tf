@@ -81,25 +81,3 @@ resource "nsxt_policy_security_policy" "Multisite-VDI" {
   }
 }
 
-resource "nsxt_policy_security_policy" "VDIGaurdrailBlackist" {
-  description  = "Private Cloud Default Section provisioned by Terraform"
-  display_name = "Private Cloud Default Deny"
-  category = "Application"
-  sequence_number = 59999
-  rule {
-    display_name = "Default Deny (Reject)"
-    description  = ""
-    action       = "REJECT"
-    ip_version  = "IPV4"
-    destination_groups =  [nsxt_policy_group.VDIDekstops.path]
-    scope = [nsxt_policy_group.VDIDekstops.path]
-  }
-    rule {
-    display_name = "Default Deny (Reject)"
-    description  = ""
-    action       = "REJECT"
-    ip_version  = "IPV4"
-    source_groups =  [nsxt_policy_group.VDIDekstops.path]
-    scope = [nsxt_policy_group.VDIDekstops.path]
-  }
-}
