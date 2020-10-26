@@ -37,7 +37,7 @@ resource "nsxt_policy_group" "InternetProxy" {
   }
 }
 
-resource "nsxt_policy_security_policy" "Multisite VDI" {
+resource "nsxt_policy_security_policy" "Multisite-VDI" {
   description  = "Policy for multisite VDI deployment"
   display_name = ""
   category = "Environment"
