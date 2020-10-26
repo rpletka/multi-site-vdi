@@ -26,7 +26,7 @@ resource "nsxt_policy_group" "SharedServices" {
   }
 } 
 
-resource "nsxt_policy_group" "VDI-Desktops" {
+resource "nsxt_policy_group" "VDIDesktops" {
   display_name = "VDI Desktops"
   description  = "VDI Desktops Group provisioned by Terraform"
   criteria {
@@ -55,31 +55,31 @@ resource "nsxt_policy_security_policy" "Multisite-VDI" {
     description  = ""
     action       = "ALLOW"
     ip_version  = "IPV4"
-    source_groups = [nsxt_policy_group.VDI-Desktops.path]
+    source_groups = [nsxt_policy_group.VDIDesktops.path]
     destination_groups = [nsxt_policy_group.SharedServices.path]
-    scope = [nsxt_policy_group.VDI-Desktops.path, nsxt_policy_group.SharedServices.path]
+    scope = [nsxt_policy_group.VDIDesktops.path, nsxt_policy_group.SharedServices.path]
   }
    rule {
     display_name = "Allow Internet Proxy Access"
     description  = ""
     action       = "ALLOW"
     ip_version  = "IPV4"
-    source_groups = [nsxt_policy_group.VDI-Desktops.path]
+    source_groups = [nsxt_policy_group.VDIDesktops.path]
     destination_groups = [nsxt_policy_group.InternetProxy.path]
-    scope = [nsxt_policy_group.VDI-Desktops.path, nsxt_policy_group.InternetProxy.path]
+    scope = [nsxt_policy_group.VDIDesktops.path, nsxt_policy_group.InternetProxy.path]
   }
   rule {
     display_name = "Prevent Lateral Movement"
     description  = ""
     action       = "REJECT"
     ip_version  = "IPV4"
-    source_groups = [nsxt_policy_group.VDI-Desktops.path]
-    destination_groups = [nsxt_policy_group.VDI-Desktops.path]
-    scope = [nsxt_policy_group.VDI-Desktops.path]
+    source_groups = [nsxt_policy_group.VDIDesktops.path]
+    destination_groups = [nsxt_policy_group.VDIDesktops.path]
+    scope = [nsxt_policy_group.VDIDesktops.path]
   }
 }
 
-resource "nsxt_policy_security_policy" "PrivateCloudGaurdrailBlackist" {
+resource "nsxt_policy_security_policy" "VDIGaurdrailBlackist" {
   description  = "Private Cloud Default Section provisioned by Terraform"
   display_name = "Private Cloud Default Deny"
   category = "Application"
