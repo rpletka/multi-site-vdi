@@ -91,15 +91,15 @@ resource "nsxt_policy_security_policy" "VDIGaurdrailBlackist" {
     description  = ""
     action       = "REJECT"
     ip_version  = "IPV4"
-    destination_groups =  [nsxt_policy_group.VDI-Dekstops.path]
-    scope = [nsxt_policy_group.VDI-Dekstops.path]
+    destination_groups =  [nsxt_policy_group.VDIDekstops.path]
+    scope = [nsxt_policy_group.VDIDekstops.path]
   }
     rule {
     display_name = "Default Deny (Reject)"
     description  = ""
     action       = "REJECT"
     ip_version  = "IPV4"
-    source_groups =  [nsxt_policy_group.VDI-Dekstops.path]
-    scope = [nsxt_policy_group.VDI-Dekstops.path]
+    source_groups =  [nsxt_policy_group.VDIDekstops.path]
+    scope = [nsxt_policy_group.VDIDekstops.path]
   }
 }
