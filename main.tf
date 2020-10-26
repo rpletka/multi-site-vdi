@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    nsxt = {
+      source = "vmware/nsxt"
+      version = "3.1.0"
+    }
+  }
+}
+
 # Configure the VMware NSX-T Provider
 provider "nsxt" {
     host = var.nsxIP
