@@ -92,4 +92,12 @@ resource "nsxt_policy_security_policy" "VDIGuardrailBlackist" {
     destination_groups = [nsxt_policy_group.VDIDesktops.path]
     scope = [nsxt_policy_group.VDIDesktops.path]
   }
+  rule {
+    display_name = "Default Deny (Reject)"
+    description  = ""
+    action       = "REJECT"
+    ip_version  = "IPV4"
+    source_groups = [nsxt_policy_group.VDIDesktops.path]
+    scope = [nsxt_policy_group.VDIDesktops.path]
+  }
 }
