@@ -50,7 +50,7 @@ resource "nsxt_policy_group" "InternetProxy" {
 
 resource "nsxt_policy_security_policy" "Multisite-VDI" {
   description  = "Policy for multisite VDI deployment"
-  display_name = ""
+  display_name = "Policy for multisite VDI deployment"
   category = "Environment"
   rule {
     display_name = "Allow Shared Services"
