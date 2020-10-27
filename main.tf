@@ -57,7 +57,7 @@ resource "nsxt_policy_security_policy" "Multisite-VDI" {
     ip_version  = "IPV4"
     source_groups = [nsxt_policy_group.VDIDesktops.path]
     destination_groups = [nsxt_policy_group.SharedServices.path]
-    scope = [nsxt_policy_group.VDIDesktops.path, nsxt_policy_group.SharedServices.path]
+    #scope = [nsxt_policy_group.VDIDesktops.path, nsxt_policy_group.SharedServices.path]
   }
    rule {
     display_name = "Allow Internet Proxy Access"
@@ -66,7 +66,7 @@ resource "nsxt_policy_security_policy" "Multisite-VDI" {
     ip_version  = "IPV4"
     source_groups = [nsxt_policy_group.VDIDesktops.path]
     destination_groups = [nsxt_policy_group.InternetProxy.path]
-    scope = [nsxt_policy_group.VDIDesktops.path, nsxt_policy_group.InternetProxy.path]
+    #scope = [nsxt_policy_group.VDIDesktops.path, nsxt_policy_group.InternetProxy.path]
   }
   rule {
     display_name = "Prevent Lateral Movement"
@@ -75,7 +75,7 @@ resource "nsxt_policy_security_policy" "Multisite-VDI" {
     ip_version  = "IPV4"
     source_groups = [nsxt_policy_group.VDIDesktops.path]
     destination_groups = [nsxt_policy_group.VDIDesktops.path]
-    scope = [nsxt_policy_group.VDIDesktops.path]
+    #scope = [nsxt_policy_group.VDIDesktops.path]
   }
 }
 
@@ -90,7 +90,7 @@ resource "nsxt_policy_security_policy" "VDIGuardrailBlackist" {
     action       = "REJECT"
     ip_version  = "IPV4"
     destination_groups = [nsxt_policy_group.VDIDesktops.path]
-    scope = [nsxt_policy_group.VDIDesktops.path]
+    #scope = [nsxt_policy_group.VDIDesktops.path]
   }
   rule {
     display_name = "Default Deny (Reject)"
@@ -98,6 +98,6 @@ resource "nsxt_policy_security_policy" "VDIGuardrailBlackist" {
     action       = "REJECT"
     ip_version  = "IPV4"
     source_groups = [nsxt_policy_group.VDIDesktops.path]
-    scope = [nsxt_policy_group.VDIDesktops.path]
+    #scope = [nsxt_policy_group.VDIDesktops.path]
   }
 }
