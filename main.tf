@@ -31,7 +31,7 @@ resource "nsxt_policy_group" "VDIDesktops" {
   description  = "VDI Desktops Group provisioned by Terraform"
   criteria {
   ipaddress_expression {
-      ip_addresses = ["10.1.6.0/24", "10.2.6.0/24", "10.3.6.0/24"]
+      ip_addresses = ["10.1.6.0/24", "10.2.6.0/24"]
     }
   }
 } 
