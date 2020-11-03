@@ -6,6 +6,7 @@ deleteDir()
          checkout scm
        }
 
+      
         withCredentials([usernamePassword(credentialsId: 'nsxCredentials',
         usernameVariable: 'NSXUSERNAME', passwordVariable: 'NSXPASSWORD')]) {
         stage ('Execute Terraform Template') {
